@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tinymiko"
+version = "0.1.0"
+description = "轻量、异步、可编程的网络设备 SSH 交互核心"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["asyncssh>=2.14.2"]
+
+[dependency-groups]
+dev = ["pytest>=8.0.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tinymiko"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+exclude = [".uv-cache", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+ignore = ["RUF001"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
